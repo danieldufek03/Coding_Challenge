@@ -2,89 +2,126 @@
 Simple REST API  for Users and Organizations implemented with Django Rest Framework
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+You will need the following Software to run this project
 
 * [Python 3.7](https://www.python.org/downloads/release/python-370/)
 * [Django 2.2.6](https://docs.djangoproject.com/en/2.2/releases/2.2.6/)
+* [PIP 10.0.1 or greater](https://pypi.org/project/pip/)
 
 
-```
-Give examples
-```
+* [VirtualEnv](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/) --not required but it is conventional to install all libraries in a virtualenv
+'''
+python3 -m pip install --user virtualenv
+'''
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+Install the project by running the following:
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
+Clone the repo
 
 ```
-until finished
+ git clone https://github.com/danieldufek03/Coding_Challenge.git
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
 ```
-Give an example
+cd Coding_Challenge/CodeChallenge/
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
+startup virtualenv
 
 ```
-Give an example
+virtualenv env
+source env/Scripts/activate  
 ```
 
-## Deployment
+install django and django rest framework
 
-Add additional notes about how to deploy this on a live system
+```
+pip install django
+pip install djangorestframework
+```
+Run the application
+```
+python manage.py runserver
+```
 
-## Built With
+# How To
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+usage of this api, for this section we will assume the user is familiar with some
+rest client such as postman or insomnia.
 
-## Contributing
+## View all Users
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+submitting a GET request to http://localhost:8000/users/ through postman or your web browser will display a list of all users and their attributes
 
-## Versioning
+## View all Organizations
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+submitting a GET request to http://localhost:8000/organizations/ through postman or your web browser will display a list of all organizations and their attributes
 
-## Authors
+## View a single User
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+submit a GET request to http://localhost:8000/users/$user_id/ where $user_id is obtained from the id field of all users
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+## View a single Organization
 
-## License
+submit a GET request to http://localhost:8000/organizations/$organization_id/ where $organization_id is obtained from the id field of all organizations
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+## Create a single User
 
-## Acknowledgments
+Submit a POST request to http://localhost:8000/users/ with the following form data
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+Example...
+```
+username:Jimmy
+password:Password123!@#
+email:jimmy@gmail.com
+first_name:Daniel
+last_name:d
+address:ddd
+phone:444444
+```
 
+## Create a single Organization
+
+Submit a POST request to http://localhost:8000/users/ with the following form data
+
+Example...
+```
+name:Nextel
+address:123 Nextel Way
+phone:444444
+```
+
+## Add a user to an Organizations
+
+Submit a POST request to http://localhost:8000/userorganizations/ with the following form data
+you will need to use the id field from both organizations and users
+Example...
+```
+users: 3
+organizations: 2
+```
+
+## Delete a user from an Organizations
+
+Submit a DELETE request with no form data to http://localhost:8000/userorganizations/$relationship_id/ which can be obtained by submitting a GET request to http://localhost:8000/userorganizations/
+
+
+## Read all Users from an Organizations
+
+by submitting a GET request to http://localhost:8000/organizations/$organization_id will return a field users which contains the user id's of all users in the organization
+
+## Read all Organizations from a User
+
+by submitting a GET request to http://localhost:8000/users/$user_id will return a field users which contains the organization id's of all organizations which the user belongs to
+
+
+
+
+### Future Work
+I would like to update in the future to have models be referenced by something more user friendly than the id field
