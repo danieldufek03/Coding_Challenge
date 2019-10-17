@@ -14,9 +14,9 @@ You will need the following Software to run this project
 
 
 * [VirtualEnv](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/) --not required but it is conventional to install all libraries in a virtualenv
-'''
+```
 python3 -m pip install --user virtualenv
-'''
+```
 
 ### Installing
 
