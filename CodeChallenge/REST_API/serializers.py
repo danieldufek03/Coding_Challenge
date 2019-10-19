@@ -11,8 +11,8 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'username', 'password', 'email', 'first_name', 'last_name', 'address', 'phone', 'organizations' )
-        write_only_fields = ('password',)
-
+        # write_only_fields = ('password',)
+        extra_kwargs = {'password': {'write_only': True}}
 
 class OrganizationSerializer(serializers.ModelSerializer):
     class Meta:
