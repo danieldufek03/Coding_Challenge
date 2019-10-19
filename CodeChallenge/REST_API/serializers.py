@@ -10,15 +10,10 @@ class UserOrganizationSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'password', 'email', 'first_name', 'last_name', 'address', 'phone', 'organizations' )
-        # write_only_fields = ('password',)
+        fields = ('username', 'password', 'email', 'first_name', 'last_name', 'address', 'phone', 'organizations' )
         extra_kwargs = {'password': {'write_only': True}}
 
 class OrganizationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Organization
-        fields = ('id', 'name', 'address', 'phone', 'users', )
-        # lookup_field = 'user_list'
-        # extra_kwargs = {
-        #     'url' : {'lookup_field' : 'user_list'},
-        # }
+        fields = ('name', 'address', 'phone', 'users', )

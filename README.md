@@ -65,11 +65,11 @@ submitting a GET request to http://localhost:8000/organizations/ through postman
 
 ## View a single User
 
-submit a GET request to http://localhost:8000/users/$user_id/ where $user_id is obtained from the id field of all users
+submit a GET request to http://localhost:8000/users/$username/ where $username is obtained from the username field of all users
 
 ## View a single Organization
 
-submit a GET request to http://localhost:8000/organizations/$organization_id/ where $organization_id is obtained from the id field of all organizations
+submit a GET request to http://localhost:8000/organizations/$organization_name/ where $organization_name is obtained from the name field of all organizations
 
 ## Create a single User
 
@@ -88,7 +88,7 @@ phone:444444
 
 ## Create a single Organization
 
-Submit a POST request to http://localhost:8000/users/ with the following form data
+Submit a POST request to http://localhost:8000/organizations/ with the following form data
 
 Example...
 ```
@@ -100,11 +100,11 @@ phone:444444
 ## Add a user to an Organizations
 
 Submit a POST request to http://localhost:8000/userorganizations/ with the following form data
-you will need to use the id field from both organizations and users
+you will need to use the username and name field from both organizations and users
 Example...
 ```
-users: 3
-organizations: 2
+users:Jimmy
+organizations:Nextel
 ```
 
 ## Delete a user from an Organizations
@@ -114,14 +114,8 @@ Submit a DELETE request with no form data to http://localhost:8000/userorganizat
 
 ## Read all Users from an Organizations
 
-by submitting a GET request to http://localhost:8000/organizations/$organization_id will return a field users which contains the user id's of all users in the organization
+by submitting a GET request to http://localhost:8000/organizations/$organization_name will return a field users which contains the usernames of all users in the organization
 
 ## Read all Organizations from a User
 
-by submitting a GET request to http://localhost:8000/users/$user_id will return a field users which contains the organization id's of all organizations which the user belongs to
-
-
-
-
-### Future Work
-I would like to update in the future to have models be referenced by something more user friendly than the id field
+by submitting a GET request to http://localhost:8000/users/$username will return a field users which contains the organization name of all organizations which the user belongs to

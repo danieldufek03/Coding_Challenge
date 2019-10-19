@@ -9,6 +9,7 @@ class UserOrganization(models.Model):
         return self.users
 
 class User(AbstractUser):
+    username = models.CharField(max_length=150, unique=True, primary_key=True)
     first_name = models.CharField(max_length=40)
     last_name = models.CharField(max_length=40)
     email = models.EmailField(max_length=40, unique = True)
@@ -25,7 +26,7 @@ class User(AbstractUser):
 
 class Organization(models.Model):
     users = models.ManyToManyField('User', through=UserOrganization, blank=True)
-    name = models.CharField(max_length=40)
+    name = models.CharField(max_length=40, unique=True, primary_key=True)
     address = models.TextField(max_length=40)
     phone = models.BigIntegerField(null=True)
 
