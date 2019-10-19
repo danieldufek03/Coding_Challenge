@@ -8,7 +8,7 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
-    lookup_field = "username"
+    # lookup_field = "username"
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
@@ -18,7 +18,7 @@ class OrganizationViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows groups to be viewed or edited.
     """
-    lookup_field = "name"
+    # lookup_field = "name"
     queryset = Organization.objects.all()
     serializer_class = OrganizationSerializer
 
@@ -26,6 +26,6 @@ class UserOrganizationViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows groups to be viewed or edited.
     """
-    lookup_field = "name"
+    # lookup_field = "name"
     queryset = UserOrganization.objects.all()
     serializer_class = UserOrganizationSerializer
